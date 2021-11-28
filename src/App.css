@@ -350,7 +350,6 @@
     .sliceca {
         display: flex;
         justify-content: space-between;
-        border-bottom: solid px lightgray;
     }
     
     .imgpart {
