@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Header from "./header";
-import Footer from "./copyright";
 import CopyrightSharpIcon from "@mui/icons-material/CopyrightSharp";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
@@ -15,16 +13,19 @@ function Register() {
   const navigate = useNavigate();
 
   let handlesubmit = async (e) => {
-    try {
-      navigate("/", { replace: true });
-      let post = await axios.post(
-        "https://yadharthecommerces.herokuapp.com/register",
-        {
-          gmail,
-          password,
-        }
-      );
-    } catch (error) {}
+    if (password === cpassword) {
+      try {
+        navigate("/", { replace: true });
+        let post = await axios.post(
+          "https://yadharthecommerces.herokuapp.com/register",
+          {
+            gmail,
+            password,
+          }
+        );
+      } catch (error) {}
+    } else {
+    }
   };
 
   return (
@@ -63,8 +64,8 @@ function Register() {
             <input
               type="password"
               id="signpassword"
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
+              value={cpassword}
+              onChange={(e) => setcpassword(e.target.value)}
             ></input>
 
             <div className="signsubmit">

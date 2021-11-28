@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./header";
-import Footer from "./copyright";
 import Rating from "@mui/material/Rating";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";

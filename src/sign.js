@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Header from "./header";
-import Footer from "./copyright";
 import CopyrightSharpIcon from "@mui/icons-material/CopyrightSharp";
 
 function Signin() {
