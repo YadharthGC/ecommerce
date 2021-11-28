@@ -15,7 +15,9 @@ function Shoes() {
 
   let fetch = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/shoes");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/shoes"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -23,56 +25,66 @@ function Shoes() {
 
   let yonex = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/yonex");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/yonex"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let lining = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/lining");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/lining"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let blue = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/blue");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/blue"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let white = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/white");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/white"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let red = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/red");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/red");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let silver = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/silver");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/silver"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let ot = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/ot");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/ot");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let tt = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/tt");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/tt");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -82,7 +94,7 @@ function Shoes() {
       console.log(code);
       alert("Added to cart");
       let post = await axios.post(
-        "http://localhost:3003/cartsz",
+        "https://yadharthecommerces.herokuapp.com/cartsz",
         { code },
         {
           headers: {

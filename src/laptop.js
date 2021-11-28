@@ -15,7 +15,9 @@ function Laptops() {
 
   let fetch = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/laptops");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/laptops"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -23,7 +25,7 @@ function Laptops() {
 
   let hp = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/hp");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/hp");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -31,63 +33,79 @@ function Laptops() {
 
   let dell = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/dell");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/dell"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let lenevo = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/lenevo");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/lenevo"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let six = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/six");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/six");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let five = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/five");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/five"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let four = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/four");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/four"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let roma = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/roma");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/roma"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let romb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/romb");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/romb"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let rama = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/rama");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/rama"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let ramb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/ramb");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/ramb"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -98,7 +116,7 @@ function Laptops() {
       console.log(code);
       alert("Added to cart");
       let post = await axios.post(
-        "http://localhost:3003/cartl",
+        "https://yadharthecommerces.herokuapp.com/cartl",
         { code },
         {
           headers: {

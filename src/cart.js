@@ -2,9 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./header";
-import Footer from "./copyright";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Rating from "@mui/material/Rating";
 
@@ -12,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function Cart() {
   const [datas, setdatas] = useState([]);
-  const [p, setp] = useState([]);
   const [total, settotal] = useState(0);
   const [qty, setqty] = useState([]);
 
@@ -22,11 +18,14 @@ function Cart() {
 
   let fetch = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/scarts", {
-        headers: {
-          Authorization: window.localStorage.getItem("app_token"),
-        },
-      });
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/scarts",
+        {
+          headers: {
+            Authorization: window.localStorage.getItem("app_token"),
+          },
+        }
+      );
       setdatas([...get.data]);
       console.log(datas);
       let sum = 0;
@@ -47,7 +46,10 @@ function Cart() {
     console.log(e, id, amt);
     try {
       window.location.reload();
-      let post = await axios.post("http://localhost:3003/qty", { e, id, amt });
+      let post = await axios.post(
+        "https://yadharthecommerces.herokuapp.com/qty",
+        { e, id, amt }
+      );
       fetch();
     } catch (error) {}
   };
@@ -55,7 +57,9 @@ function Cart() {
   let handledelete = async (id) => {
     console.log(id);
     window.location.reload();
-    let deletex = await axios.delete(`http://localhost:3003/delete/${id}`);
+    let deletex = await axios.delete(
+      `https://yadharthecommerces.herokuapp.com/delete/${id}`
+    );
     fetch();
   };
 

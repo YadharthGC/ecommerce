@@ -17,10 +17,13 @@ function Register() {
   let handlesubmit = async (e) => {
     try {
       navigate("/", { replace: true });
-      let post = await axios.post("http://localhost:3003/register", {
-        gmail,
-        password,
-      });
+      let post = await axios.post(
+        "https://yadharthecommerces.herokuapp.com/register",
+        {
+          gmail,
+          password,
+        }
+      );
     } catch (error) {}
   };
 

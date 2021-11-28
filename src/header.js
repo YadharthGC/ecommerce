@@ -8,18 +8,6 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import { useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
-  const [data, setdata] = useState([]);
-  // useEffect(() => {
-  //   fetch();
-  // }, []);
-  // let fetch = async () => {
-  //   try {
-  //     let get = await axios.get("http://localhost:3003/name");
-  //     console.log(get);
-  //   } catch (error) {
-  //     alert("name failure");
-  //   }
-  // };
 
   return (
     <div className="headertrial">

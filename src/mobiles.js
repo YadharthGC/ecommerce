@@ -15,7 +15,9 @@ function Mobile() {
 
   let fetch = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/mobiles");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/mobiles"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -23,7 +25,9 @@ function Mobile() {
 
   let samsung = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/samsung");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/samsung"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -31,7 +35,9 @@ function Mobile() {
 
   let oppo = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/oppo");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/oppo"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -39,7 +45,9 @@ function Mobile() {
 
   let realme = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/realme");
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/realme"
+      );
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -47,7 +55,7 @@ function Mobile() {
 
   let gba = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/gba");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/gba");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -55,7 +63,7 @@ function Mobile() {
 
   let gbb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/gbb");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/gbb");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -63,7 +71,7 @@ function Mobile() {
 
   let ra = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/ra");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/ra");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -71,7 +79,7 @@ function Mobile() {
 
   let rb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/rb");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/rb");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -79,7 +87,7 @@ function Mobile() {
 
   let ca = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/ca");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/ca");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -87,7 +95,7 @@ function Mobile() {
 
   let cb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/cb");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/cb");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -95,21 +103,21 @@ function Mobile() {
 
   let pa = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/pa");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/pa");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let pb = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/pb");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/pb");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
   };
   let pc = async () => {
     try {
-      let get = await axios.get("http://localhost:3003/pc");
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/pc");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -120,7 +128,7 @@ function Mobile() {
       console.log(code);
       alert("Added to cart");
       let post = await axios.post(
-        "http://localhost:3003/cartm",
+        "https://yadharthecommerces.herokuapp.com/cartm",
         { code },
         {
           headers: {
