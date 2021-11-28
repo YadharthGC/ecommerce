@@ -48,7 +48,12 @@ function Cart() {
       window.location.reload();
       let post = await axios.post(
         "https://yadharthecommerces.herokuapp.com/qty",
-        { e, id, amt }
+        { e, id, amt },
+        {
+          headers: {
+            Authorization: window.locationStorage.getItem("app_token"),
+          },
+        }
       );
       fetch();
     } catch (error) {}
