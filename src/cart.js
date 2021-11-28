@@ -48,20 +48,15 @@ function Cart() {
       window.location.reload();
       let post = await axios.post(
         "https://yadharthecommerces.herokuapp.com/qty",
-        { e, id, amt },
-        {
-          headers: {
-            Authorization: window.locationStorage.getItem("app_token"),
-          },
-        }
+        { e, id, amt }
       );
       fetch();
     } catch (error) {}
   };
 
   let handledelete = async (id) => {
-    console.log(id);
     window.location.reload();
+    console.log(id);
     let deletex = await axios.delete(
       `https://yadharthecommerces.herokuapp.com/delete/${id}`
     );
