@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function Cart() {
   const [datas, setdatas] = useState([]);
   const [total, settotal] = useState(0);
+  const [loading, setloading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +28,7 @@ function Cart() {
         }
       );
       setdatas([...get.data]);
+      setloading(false);
       console.log(datas);
       let sum = 0;
       for (let i = 0; i < get.data.length; i++) {
@@ -38,6 +40,7 @@ function Cart() {
       console.log("ok");
     } catch (error) {
       console.log(error);
+      setloading(false);
     }
   };
 
@@ -142,106 +145,116 @@ function Cart() {
           </div>
         </div>
       </nav>
-      <div className="t">
-        Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
-      </div>
-      <div className="ptb">
-        <div className="buy">
-          <button
-            className="bbutton"
-            onClick={() => {
-              handlepost();
-            }}
-          >
-            BagIt
-          </button>
-        </div>
-      </div>
-      <div className="scart">
-        <div className="sc">
-          <div style={{ lineHeight: "28px" }}>
-            <div className="sct">
-              <u>Shopping Cart</u>
+      {loading ? (
+        <h3>Loading..</h3>
+      ) : (
+        <div>
+          <div className="t">
+            Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
+          </div>
+          <div className="ptb">
+            <div className="buy">
+              <button
+                className="bbutton"
+                onClick={() => {
+                  handlepost();
+                }}
+              >
+                BagIt
+              </button>
             </div>
           </div>
-          <div className="schr">
-            <hr id="schr" />
-          </div>
-          {datas.map((data) => {
-            return (
-              <div>
-                <div className="matterz">
-                  <div className="cone">
-                    <img src={data.src} className="cimg"></img>
-                  </div>
-                  <div className="ctwo">
-                    <div className="name">
-                      <span style={{ fontSize: "25px" }}>
-                        {data.brand}&nbsp;{data.model}
-                      </span>
-                    </div>
-                    <div className="rating">
-                      <Rating
-                        style={{ fontSize: "15px" }}
-                        name="read-only"
-                        value={data.value}
-                        readOnly
-                      />
-                    </div>
-                    <div className="emi">{data.da}</div>
-                    <div className="fd">{data.db}</div>
-                    <div>
-                      <span className="ff">
-                        <span className="bt">BagIT</span> fulfilled
-                      </span>
-                    </div>
-                    <div>
-                      <span className="str"> Style:</span>
-                      <span className="ans">
-                        {data.ram}+ {data.rom}
-                      </span>
-                    </div>
-                    <div className="qd">
-                      <div className="q">
-                        <select
-                          name="qty"
-                          id="qty"
-                          value={data.qty}
-                          onChange={(e) => {
-                            handlechange(e.target.value, data._id, data.amount);
-                          }}
-                          required
-                        >
-                          <option value="">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </div>
-                      <div className="d">
-                        <button
-                          className="delbtn"
-                          onClick={() => {
-                            handledelete(data._id);
-                          }}
-                        >
-                          <DeleteIcon />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cthree">Rs{data.damt}/-</div>
-                </div>
-                <div className="schr">
-                  <hr id="lhrs" />
+          <div className="scart">
+            <div className="sc">
+              <div style={{ lineHeight: "28px" }}>
+                <div className="sct">
+                  <u>Shopping Cart</u>
                 </div>
               </div>
-            );
-          })}
+              <div className="schr">
+                <hr id="schr" />
+              </div>
+              {datas.map((data) => {
+                return (
+                  <div>
+                    <div className="matterz">
+                      <div className="cone">
+                        <img src={data.src} className="cimg"></img>
+                      </div>
+                      <div className="ctwo">
+                        <div className="name">
+                          <span style={{ fontSize: "25px" }}>
+                            {data.brand}&nbsp;{data.model}
+                          </span>
+                        </div>
+                        <div className="rating">
+                          <Rating
+                            style={{ fontSize: "15px" }}
+                            name="read-only"
+                            value={data.value}
+                            readOnly
+                          />
+                        </div>
+                        <div className="emi">{data.da}</div>
+                        <div className="fd">{data.db}</div>
+                        <div>
+                          <span className="ff">
+                            <span className="bt">BagIT</span> fulfilled
+                          </span>
+                        </div>
+                        <div>
+                          <span className="str"> Style:</span>
+                          <span className="ans">
+                            {data.ram}+ {data.rom}
+                          </span>
+                        </div>
+                        <div className="qd">
+                          <div className="q">
+                            <select
+                              name="qty"
+                              id="qty"
+                              value={data.qty}
+                              onChange={(e) => {
+                                handlechange(
+                                  e.target.value,
+                                  data._id,
+                                  data.amount
+                                );
+                              }}
+                              required
+                            >
+                              <option value="">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                          </div>
+                          <div className="d">
+                            <button
+                              className="delbtn"
+                              onClick={() => {
+                                handledelete(data._id);
+                              }}
+                            >
+                              <DeleteIcon />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="cthree">Rs{data.damt}/-</div>
+                    </div>
+                    <div className="schr">
+                      <hr id="lhrs" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
