@@ -16,6 +16,7 @@ function Ship() {
   const [card, setcard] = useState([]);
   const [exp, setexp] = useState([]);
   const [cvv, setcvv] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const [items, setitems] = useState([]);
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function Ship() {
         }
       );
       setdatas([...get.data]);
+      setloading(false);
       console.log(datas);
       let sum = 0;
       for (let i = 0; i < get.data.length; i++) {
@@ -46,6 +48,7 @@ function Ship() {
       console.log("ok");
     } catch (error) {
       console.log(error);
+      setloading(false);
     }
   };
 
@@ -152,117 +155,127 @@ function Ship() {
           </div>
         </div>
       </nav>
-      <form
-        onSubmit={(e) => {
-          handlesubmit(e);
-        }}
-      >
-        <div className="final">
-          <div className="location">
-            <div className="xa"> Delivery Address</div>
-            <div className="xb">Name</div>
-            <div>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setname(e.target.value)}
-              ></input>
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <div>
+          <form
+            onSubmit={(e) => {
+              handlesubmit(e);
+            }}
+          >
+            <div className="final">
+              <div className="location">
+                <div className="xa"> Delivery Address</div>
+                <div className="xb">Name</div>
+                <div>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setname(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">Mobile number</div>
+                <div>
+                  <input
+                    type="text"
+                    value={mobile}
+                    onChange={(e) => setmobile(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">Pincode</div>
+                <div>
+                  <input
+                    type="text"
+                    value={pin}
+                    onChange={(e) => setpin(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">Address</div>
+                <div>
+                  <input
+                    type="text"
+                    className="xbaddress"
+                    value={address}
+                    onChange={(e) => setaddress(e.target.value)}
+                  ></input>
+                </div>
+              </div>
+              <div className="money">
+                <div className="xa">Debit/Credit card</div>
+                <div className="xb">Name</div>
+                <div>
+                  <input
+                    type="text"
+                    value={noc}
+                    onChange={(e) => setnoc(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">Card number</div>
+                <div>
+                  <input
+                    type="text"
+                    value={card}
+                    onChange={(e) => setcard(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">Expiry date</div>
+                <div>
+                  <input
+                    type="text"
+                    className="xbxb"
+                    value={exp}
+                    onChange={(e) => setexp(e.target.value)}
+                  ></input>
+                </div>
+                <div className="xb">CVV</div>
+                <div>
+                  <input
+                    type="text"
+                    className="xbxb"
+                    value={cvv}
+                    onChange={(e) => setcvv(e.target.value)}
+                  ></input>
+                </div>
+              </div>
             </div>
-            <div className="xb">Mobile number</div>
-            <div>
-              <input
-                type="text"
-                value={mobile}
-                onChange={(e) => setmobile(e.target.value)}
-              ></input>
-            </div>
-            <div className="xb">Pincode</div>
-            <div>
-              <input
-                type="text"
-                value={pin}
-                onChange={(e) => setpin(e.target.value)}
-              ></input>
-            </div>
-            <div className="xb">Address</div>
-            <div>
-              <input
-                type="text"
-                className="xbaddress"
-                value={address}
-                onChange={(e) => setaddress(e.target.value)}
-              ></input>
-            </div>
-          </div>
-          <div className="money">
-            <div className="xa">Debit/Credit card</div>
-            <div className="xb">Name</div>
-            <div>
-              <input
-                type="text"
-                value={noc}
-                onChange={(e) => setnoc(e.target.value)}
-              ></input>
-            </div>
-            <div className="xb">Card number</div>
-            <div>
-              <input
-                type="text"
-                value={card}
-                onChange={(e) => setcard(e.target.value)}
-              ></input>
-            </div>
-            <div className="xb">Expiry date</div>
-            <div>
-              <input
-                type="text"
-                className="xbxb"
-                value={exp}
-                onChange={(e) => setexp(e.target.value)}
-              ></input>
-            </div>
-            <div className="xb">CVV</div>
-            <div>
-              <input
-                type="text"
-                className="xbxb"
-                value={cvv}
-                onChange={(e) => setcvv(e.target.value)}
-              ></input>
-            </div>
-          </div>
-        </div>
 
-        <div className="t">
-          Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
-        </div>
-        <div className="xc">
-          <input value="purchase" type="submit" className="xcsubmit"></input>
-        </div>
-      </form>
-      <div className="display">
-        {datas.map((datae) => {
-          return (
-            <div className="displaya">
-              <div>
-                <img src={datae.src} className="mobileimg" />
-              </div>
-              <div className="title" style={{ fontSize: "15px" }}>
-                {datae.brand}&nbsp;{datae.model}
-              </div>
-              <div className="dqa">
-                Quantity:{" "}
-                <span className="ans">
-                  {datae.qty}*{datae.amount}
-                </span>
-              </div>
-              <div className="dqa">
-                Amount: <span className="ans">{datae.damt}</span>
-              </div>
+            <div className="t">
+              Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
             </div>
-          );
-        })}
-      </div>
+            <div className="xc">
+              <input
+                value="purchase"
+                type="submit"
+                className="xcsubmit"
+              ></input>
+            </div>
+          </form>
+          <div className="display">
+            {datas.map((datae) => {
+              return (
+                <div className="displaya">
+                  <div>
+                    <img src={datae.src} className="mobileimg" />
+                  </div>
+                  <div className="title" style={{ fontSize: "15px" }}>
+                    {datae.brand}&nbsp;{datae.model}
+                  </div>
+                  <div className="dqa">
+                    Quantity:{" "}
+                    <span className="ans">
+                      {datae.qty}*{datae.amount}
+                    </span>
+                  </div>
+                  <div className="dqa">
+                    Amount: <span className="ans">{datae.damt}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
 
 function Shoes() {
   const [datas, setdatas] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const shoe = [
     {
@@ -144,7 +145,10 @@ function Shoes() {
       );
       console.log(datas);
       setdatas([...get.data]);
-    } catch (error) {}
+      setloading(false);
+    } catch (error) {
+      setloading(false);
+    }
   };
 
   let yonex = async () => {
@@ -302,159 +306,164 @@ function Shoes() {
           </div>
         </div>
       </nav>
-      <div className="slices">
-        <div className="slicea">
-          <div>
-            <div className="title" style={{ fontSize: "20px" }}>
-              <u>
-                <span style={{ color: "#e0aa21" }}>BagIT</span>
-              </u>
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <div className="slices">
+          <div className="slicea">
+            <div>
+              <div className="title" style={{ fontSize: "20px" }}>
+                <u>
+                  <span style={{ color: "#e0aa21" }}>BagIT</span>
+                </u>
+              </div>
+              <div className="brandz">
+                <div className="r">Brands</div>
+                <ul className="ula">
+                  <li>
+                    <button className="bbtn" onClick={() => yonex()}>
+                      Yonex
+                    </button>
+                  </li>
+                  <li>
+                    <button className="bbtn" onClick={() => lining()}>
+                      Li-ning
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <hr id="hbrb" />
+              <div className="pricesz">
+                <div className="r">Price</div>
+                <ul className="ula">
+                  <li>
+                    <button className="bbtn" onClick={() => ot()}>
+                      &gt;10000
+                    </button>
+                  </li>
+                  <li>
+                    <button className="bbtn" onClick={() => tt()}>
+                      &gt;3000
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <hr id="hbrc" />
+              <div className="ramz">
+                <div className="r">Color</div>
+                <ul className="ula">
+                  <li>
+                    <button className="bbtn" onClick={() => blue()}>
+                      Blue
+                    </button>
+                  </li>
+                  <li>
+                    <button className="bbtn" onClick={() => white()}>
+                      White
+                    </button>
+                  </li>
+                  <li>
+                    <button className="bbtn" onClick={() => red()}>
+                      Red
+                    </button>
+                  </li>
+                  <li>
+                    <button className="bbtn" onClick={() => silver()}>
+                      Silver
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <hr id="hbre" />
+              <div className="cn">
+                <div className="r">All</div>
+                <ul className="ula">
+                  <li>
+                    <button className="bbtn" onClick={() => allshoes()}>
+                      All
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <hr id="hbrf" />
             </div>
-            <div className="brandz">
-              <div className="r">Brands</div>
-              <ul className="ula">
-                <li>
-                  <button className="bbtn" onClick={() => yonex()}>
-                    Yonex
-                  </button>
-                </li>
-                <li>
-                  <button className="bbtn" onClick={() => lining()}>
-                    Li-ning
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <hr id="hbrb" />
-            <div className="pricesz">
-              <div className="r">Price</div>
-              <ul className="ula">
-                <li>
-                  <button className="bbtn" onClick={() => ot()}>
-                    &gt;10000
-                  </button>
-                </li>
-                <li>
-                  <button className="bbtn" onClick={() => tt()}>
-                    &gt;3000
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <hr id="hbrc" />
-            <div className="ramz">
-              <div className="r">Color</div>
-              <ul className="ula">
-                <li>
-                  <button className="bbtn" onClick={() => blue()}>
-                    Blue
-                  </button>
-                </li>
-                <li>
-                  <button className="bbtn" onClick={() => white()}>
-                    White
-                  </button>
-                </li>
-                <li>
-                  <button className="bbtn" onClick={() => red()}>
-                    Red
-                  </button>
-                </li>
-                <li>
-                  <button className="bbtn" onClick={() => silver()}>
-                    Silver
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <hr id="hbre" />
-            <div className="cn">
-              <div className="r">All</div>
-              <ul className="ula">
-                <li>
-                  <button className="bbtn" onClick={() => allshoes()}>
-                    All
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <hr id="hbrf" />
+          </div>
+          <div className="slicec">
+            {datas.map((data) => {
+              return (
+                <div>
+                  <div className="sliceca">
+                    <div className="imgpart">
+                      <img src={data.src} className="mobileimg" />
+                    </div>
+                    <div className="detailspart">
+                      <div>
+                        <div className="name">
+                          <span style={{ fontSize: "25px" }}>
+                            {data.brand}&nbsp;{data.model}
+                          </span>
+                        </div>
+                        <div className="rating">
+                          <Rating
+                            style={{ fontSize: "15px" }}
+                            name="read-only"
+                            value={data.value}
+                            readOnly
+                          />
+                        </div>
+                        <div>
+                          <span className="no">Rs {data.amount}/-</span>
+                          <span className="slash">&#8377;{data.not}</span>
+                          <br />
+                          <span className="save"> Save &#8377;{data.save}</span>
+                          <div className="emi">{data.da}</div>
+                        </div>
+                        <div className="fd">{data.db}</div>
+                      </div>
+                    </div>
+
+                    <div className="featurespart">
+                      <div>
+                        <div>
+                          Upper:
+                          <span className="ans">{data.ram}</span>
+                        </div>
+                        <div>
+                          Midsole:
+                          <span className="ans">{data.middle}</span>
+                        </div>
+                        <div>
+                          Outsole:
+                          <span className="ans">{data.rom}</span>
+                        </div>
+                        <div>
+                          Size available:
+                          <span className="ans">{data.size}</span>
+                        </div>
+                        <div>
+                          Color:
+                          <span className="ans">{data.color}</span>
+                        </div>
+                        <div>
+                          <button
+                            className="add"
+                            onClick={() => {
+                              handleadd(data.code);
+                            }}
+                          >
+                            <AddShoppingCartSharpIcon id="acs" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr id="hrs" />
+                </div>
+              );
+            })}
           </div>
         </div>
-        <div className="slicec">
-          {datas.map((data) => {
-            return (
-              <div>
-                <div className="sliceca">
-                  <div className="imgpart">
-                    <img src={data.src} className="mobileimg" />
-                  </div>
-                  <div className="detailspart">
-                    <div>
-                      <div className="name">
-                        <span style={{ fontSize: "25px" }}>
-                          {data.brand}&nbsp;{data.model}
-                        </span>
-                      </div>
-                      <div className="rating">
-                        <Rating
-                          style={{ fontSize: "15px" }}
-                          name="read-only"
-                          value={data.value}
-                          readOnly
-                        />
-                      </div>
-                      <div>
-                        <span className="no">Rs {data.amount}/-</span>
-                        <span className="slash">&#8377;{data.not}</span>
-                        <br />
-                        <span className="save"> Save &#8377;{data.save}</span>
-                        <div className="emi">{data.da}</div>
-                      </div>
-                      <div className="fd">{data.db}</div>
-                    </div>
-                  </div>
-
-                  <div className="featurespart">
-                    <div>
-                      <div>
-                        Upper:
-                        <span className="ans">{data.ram}</span>
-                      </div>
-                      <div>
-                        Midsole:
-                        <span className="ans">{data.middle}</span>
-                      </div>
-                      <div>
-                        Outsole:
-                        <span className="ans">{data.rom}</span>
-                      </div>
-                      <div>
-                        Size available:<span className="ans">{data.size}</span>
-                      </div>
-                      <div>
-                        Color:
-                        <span className="ans">{data.color}</span>
-                      </div>
-                      <div>
-                        <button
-                          className="add"
-                          onClick={() => {
-                            handleadd(data.code);
-                          }}
-                        >
-                          <AddShoppingCartSharpIcon id="acs" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr id="hrs" />
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      )}
     </div>
   );
 }

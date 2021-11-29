@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./header";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { LoadingButton } from "@mui/lab";
 
 function Shipped() {
   const [datas, setdatas] = useState([]);
@@ -98,7 +97,7 @@ function Shipped() {
         </div>
       </nav>
       {loading ? (
-        <LoadingButton />
+        <h3>Loading</h3>
       ) : (
         <div className="display">
           {datas.map((data) => {
