@@ -13,18 +13,17 @@ function Register() {
   const navigate = useNavigate();
 
   let handlesubmit = async (e) => {
-    if (password === cpassword) {
-      try {
-        navigate("/", { replace: true });
-        let post = await axios.post(
-          "https://yadharthecommerces.herokuapp.com/register",
-          {
-            gmail,
-            password,
-          }
-        );
-      } catch (error) {}
-    } else {
+    try {
+      navigate("/", { replace: true });
+      let post = await axios.post(
+        "https://yadharthecommerces.herokuapp.com/register",
+        {
+          gmail,
+          password,
+        }
+      );
+    } catch (error) {
+      alert("nope");
     }
   };
 

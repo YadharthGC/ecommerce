@@ -8,6 +8,8 @@ import Signin from "./sign.js";
 import Register from "./register.js";
 import Laptops from "./laptop.js";
 import Shoes from "./shoes.js";
+import Ship from "./ship.js";
+import Shipped from "./shipped.js";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/cart" element={<Cart />} exact={true} />
         <Route path="/laptop" element={<Laptops />} exact={true} />
         <Route path="/shoe" element={<Shoes />} exact={true} />
+        <Route path="/ship" element={<Ship />} exact={true} />
+        <Route path="/shipped" element={<Shipped />} exact={true} />
       </Routes>
     </Router>
   );

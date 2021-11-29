@@ -4,13 +4,13 @@ import axios from "axios";
 import Header from "./header";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Rating from "@mui/material/Rating";
-
+import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function Cart() {
   const [datas, setdatas] = useState([]);
   const [total, settotal] = useState(0);
-  const [qty, setqty] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch();
@@ -35,10 +35,9 @@ function Cart() {
         }
       }
       settotal(sum);
-      setdatas([...get.data]);
-      setqty([...get.data.qty]);
+      console.log("ok");
     } catch (error) {
-      console.log("error1");
+      console.log(error);
     }
   };
 
@@ -61,6 +60,23 @@ function Cart() {
       `https://yadharthecommerces.herokuapp.com/delete/${id}`
     );
     fetch();
+  };
+
+  let handlepost = async () => {
+    try {
+      navigate("/ship", { replace: true });
+      let post = await axios.post(
+        "https://yadharthecommerces.herokuapp.com/final",
+        datas,
+        {
+          headers: {
+            Authorization: window.localStorage.getItem("app_token"),
+          },
+        }
+      );
+    } catch (error) {
+      console.log("not handlepost");
+    }
   };
 
   return (
@@ -128,6 +144,18 @@ function Cart() {
       </nav>
       <div className="t">
         Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
+      </div>
+      <div className="ptb">
+        <div className="buy">
+          <button
+            className="bbutton"
+            onClick={() => {
+              handlepost();
+            }}
+          >
+            BagIt
+          </button>
+        </div>
       </div>
       <div className="scart">
         <div className="sc">

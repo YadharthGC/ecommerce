@@ -590,3 +590,103 @@
     .dropdown-menu {
         min-width: 73px;
     }
+    
+    .ptb {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        text-align: center;
+        margin-bottom: 1%;
+    }
+    
+    .bbutton {
+        background-color: #F7CA00;
+        border: solid 1px #e0aa21;
+        border-radius: 10px;
+        width: 100px;
+        color: white;
+        font-weight: bolder;
+        font-size: larger;
+        font-family: 'Righteous', cursive;
+    }
+    
+    .final {
+        margin-top: 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .final input {
+        border: none;
+        border: solid 2px lightgray;
+        border-radius: 5px;
+    }
+    
+    .location {
+        margin-left: 1%;
+        flex: 0.4;
+    }
+    
+    .money {
+        margin-left: 1%;
+        flex: 0.5;
+    }
+    
+    .xa {
+        font-family: 'Mochiy Pop One', sans-serif;
+        font-size: 20px;
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    
+    .xb {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    
+    .xbaddress {
+        height: 10vh
+    }
+    
+    .xbxb {
+        width: 50px
+    }
+    
+    .xc {
+        margin-top: 1%;
+        text-align: center;
+    }
+    
+    .xcsubmit {
+        background-color: #F7CA00;
+        border: solid 1px #e0aa21;
+        border-radius: 10px;
+        width: 100px;
+        color: white;
+        font-weight: bolder;
+        font-size: larger;
+        font-family: 'Righteous', cursive;
+    }
+    
+    .display {
+        margin-top: 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2%;
+    }
+    
+    .displaya {
+        border: solid 2px lightgray;
+        margin-left: 1%;
+    }
+    
+    .dqa {
+        font-family: 'Changa', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        color: #a3a3a3;
+        text-align: center;
+    }

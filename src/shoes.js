@@ -8,11 +8,136 @@ import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
 
 function Shoes() {
   const [datas, setdatas] = useState([]);
-  useEffect(async () => {
+
+  const shoe = [
+    {
+      brand: "Yonex",
+      model: "SHB88",
+      value: 4,
+      amount: 7100,
+      not: 8000,
+      save: 900,
+      da: "Power Cushion Badminton Shoes For Men",
+      db: "Free Delivery by BagIT",
+      ram: "Synthetic leather",
+      middle: "Rubber",
+      rom: "Synthetic resin",
+      size: "UK 8",
+      color: "Red",
+      src: "./images/ys.jpg",
+      code: "c1",
+      qty: 0,
+    },
+
+    {
+      brand: "Yonex",
+      model: "EclipsionX",
+      value: 3,
+      amount: 9999,
+      not: 11350,
+      save: 1351,
+      da: "Power Cushion Badminton Shoes",
+      db: "Free Delivery by BagIT",
+      ram: "Durable Skin",
+      middle: "ToughBrid Light",
+      rom: "Rubber",
+      size: "UK 7",
+      color: "White",
+      src: "./images/c2.jpg",
+      code: "c2",
+      qty: 0,
+    },
+    {
+      brand: "Yonex",
+      model: "SHB 37",
+      value: 4,
+      amount: 7100,
+      not: 8000,
+      save: 900,
+      da: "EX Junior Badminton Shoes",
+      db: "Free Delivery by BagIT",
+      ram: "P.U. Leather & Polyester Mesh",
+      middle: " Power Cushion & E.V.A.",
+      rom: "Rubber",
+      size: "UK 6",
+      color: "White",
+      src: "./images/c3.jpg",
+      code: "c3",
+      qty: 0,
+    },
+    {
+      brand: "Li-Ning",
+      model: "Saga Lite",
+      value: 3,
+      amount: 2038,
+      not: 4990,
+      save: 2952,
+      da: "Non-Marking Badminton Shoe",
+      db: "Free Delivery by BagIT",
+      ram: "Polyester Mesh",
+      middle: " Power Cushion ",
+      rom: "Rubber",
+      size: "UK 8",
+      color: "Blue",
+      src: "./images/c4.jpg",
+      code: "c4",
+      qty: 0,
+    },
+    {
+      brand: "Li-Ning",
+      model: "New Ace 3 Premium",
+      value: 5,
+      amount: 2890,
+      not: 3890,
+      save: 1000,
+      da: "Non-Marking Badminton Shoe",
+      db: "Free Delivery by BagIT",
+      ram: "pu+mesh",
+      middle: "phylon ",
+      rom: " gel ",
+      size: "UK 8",
+      color: "Blue",
+      src: "./images/c5.jpg",
+      code: "c5",
+      qty: 0,
+    },
+    {
+      brand: "Li-Ning",
+      model: "Saga Lite",
+      value: 3,
+      amount: 2038,
+      not: 4990,
+      save: 2952,
+      da: "Non-Marking Badminton Shoe",
+      db: "Free Delivery by BagIT",
+      ram: "Synthetic Leather and Mesh",
+      middle: " Phylon ",
+      rom: "Rubber",
+      size: "UK 10",
+      color: "Silver",
+      src: "./images/c6.jpg",
+      code: "c6",
+      qty: 0,
+    },
+  ];
+  useEffect(() => {
     fetch();
   }, []);
 
+  let postshoe = async () => {
+    try {
+      let post = await axios.post(
+        "https://yadharthecommerces.herokuapp.com/postshoe",
+        shoe
+      );
+      console.log("posted");
+    } catch (error) {
+      console.log("not posted");
+    }
+  };
+
   let fetch = async () => {
+    postshoe();
     try {
       let get = await axios.get(
         "https://yadharthecommerces.herokuapp.com/shoes"
@@ -88,6 +213,16 @@ function Shoes() {
       setdatas([...get.data]);
     } catch (error) {}
   };
+  let allshoes = async () => {
+    try {
+      let get = await axios.get(
+        "https://yadharthecommerces.herokuapp.com/allshoes"
+      );
+      console.log(datas);
+      setdatas([...get.data]);
+    } catch (error) {}
+  };
+
   let handleadd = async (code) => {
     try {
       console.log(code);
@@ -237,7 +372,7 @@ function Shoes() {
               <div className="r">All</div>
               <ul className="ula">
                 <li>
-                  <button className="bbtn" onClick={() => fetch()}>
+                  <button className="bbtn" onClick={() => allshoes()}>
                     All
                   </button>
                 </li>

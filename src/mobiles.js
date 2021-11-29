@@ -8,25 +8,198 @@ import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
 
 function Mobile() {
   const [datas, setdatas] = useState([]);
-  useEffect(async () => {
+
+  const mob = [
+    {
+      brand: "Samsung",
+      model: "Galaxy M32",
+      value: 4,
+      amount: 23000,
+      not: 25000,
+      save: 2000,
+      da: "Save extra with No Cost EMI",
+      db: "Free Delivery by BagIT",
+      rom: "128GB",
+      cellular: "5G",
+      size: "6.1 inches",
+      wp: "Unlocked for for all Carriers",
+      src: "./images/m32.jpg",
+      ram: "8GB",
+      code: "a1",
+      qty: 0,
+    },
+    {
+      brand: "Samsung",
+      model: "Galaxy M52",
+      value: 4.3,
+      amount: 29000,
+      not: 34999,
+      save: 5000,
+      da: "Save Rs 4000/- with coupon",
+      db: "Free Delivery by BagIT",
+      rom: "128GB",
+      cellular: "5G",
+      size: "6.7 inches",
+      wp: "Unlocked for for all Carriers",
+      src: "./images/m52.jpg",
+      ram: "6GB",
+      code: "a2",
+      qty: 0,
+    },
+    {
+      brand: "Samsung",
+      model: "Galaxy M21",
+      value: 4,
+      amount: 13000,
+      not: 15000,
+      save: 200,
+      da: "Save extra with No Cost EMI",
+      db: "Free Delivery by BagIT",
+      rom: "64GB",
+      cellular: "4G",
+      size: "6.4 inches",
+      wp: "Unlocked for for all Carriers",
+      src: "./images/m21.jpg",
+      ram: "4GB",
+      code: "a3",
+      qty: 0,
+    },
+    {
+      brand: "Oppo",
+      model: "A55",
+      value: 4.4,
+      amount: 15490,
+      not: 18990,
+      save: 3500,
+      da: "Upto Rs.1250 off On SBI bank cards",
+      db: "Free Delivery by BagIT",
+      rom: "64GB",
+      ram: "4GB",
+      cellular: "4G",
+      size: "6.51 inches",
+      wp: "Unlocked for for all Carriers",
+      src: "./images/a55.jpg",
+      code: "a4",
+      qty: 0,
+    },
+    {
+      brand: "Oppo",
+      model: "A74",
+      value: 4.1,
+      amount: 17990,
+      not: 20990,
+      save: 3000,
+      da: "Upto Rs.1250 off On SBI bank cards",
+      db: "Free Delivery by BagIT",
+      rom: "128GB",
+      ram: "6GB",
+      cellular: "5G",
+      size: "6.49 inches",
+      wp: "Unlocked for for all Carriers",
+      src: "./images/a74.jpg",
+      code: "a5",
+      qty: 0,
+    },
+    {
+      brand: "Oppo",
+      model: "A31",
+      value: 4,
+      amount: 12990,
+      not: 15990,
+      save: 3000,
+      da: "Save extra with No Cost EMI",
+      db: "Free Delivery by BagIT",
+      rom: "128GB",
+      ram: "6GB",
+      cellular: "4G",
+      size: "6.5 inches",
+      wp: "WhatsApp SIM",
+      src: "./images/a31.jpg",
+      code: "a6",
+      qty: 0,
+    },
+    {
+      brand: "Realme",
+      model: "narzo 30",
+      value: 4,
+      amount: 15499,
+      not: 16999,
+      save: 1500,
+      da: "Save Rs 1500/- with coupon",
+      db: "Free Delivery by BagIT",
+      rom: "128GB",
+      ram: "6GB",
+      cellular: "4G",
+      size: "6.5 inches",
+      wp: "Unlocked for All Carriers",
+      src: "./images/n30.jpg",
+      code: "a7",
+      qty: 0,
+    },
+    {
+      brand: "Realme",
+      model: "narzo 50i",
+      value: 4,
+      amount: 8999,
+      not: 9999,
+      save: 1000,
+      da: "Save extra with Cashback",
+      db: "Free Delivery by BagIT",
+      rom: "64GB",
+      ram: "4GB",
+      cellular: "4G",
+      size: "6.5 inches",
+      wp: "Unlocked for All Carriers",
+      src: "./images/50i.jpg",
+      code: "a8",
+      qty: 0,
+    },
+    {
+      brand: "Realme",
+      model: "8i",
+      value: 4,
+      amount: 13939,
+      not: 15999,
+      save: 2060,
+      da: "Save extra with Cashback",
+      db: "Free Delivery by BagIT",
+      rom: "64GB",
+      ram: "4GB",
+      cellular: "4G",
+      size: "6.5 inches",
+      wp: "Unlocked for All Carriers",
+      src: "./images/8i.jpg",
+      code: "a9",
+      qty: 0,
+    },
+  ];
+  useEffect(() => {
     fetch();
   }, []);
 
-  let fetch = async () => {
+  let postmob = async () => {
     try {
-      let get = await axios.get(
-        "https://yadharthecommerces.herokuapp.com/mobiles"
-      );
+      let post = await axios.post("https://yadharthecommerces.herokuapp.com/postmob", mob);
+      console.log("posted");
+    } catch (error) {
+      console.log("not posted");
+    }
+  };
+
+  let fetch = async () => {
+    postmob();
+    try {
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/mobiles");
       console.log(datas);
       setdatas([...get.data]);
-    } catch (error) {}
+    } catch (error) {
+      console.log("fullerror");
+    }
   };
 
   let samsung = async () => {
     try {
-      let get = await axios.get(
-        "https://yadharthecommerces.herokuapp.com/samsung"
-      );
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/samsung");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -34,9 +207,7 @@ function Mobile() {
 
   let oppo = async () => {
     try {
-      let get = await axios.get(
-        "https://yadharthecommerces.herokuapp.com/oppo"
-      );
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/oppo");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -44,9 +215,7 @@ function Mobile() {
 
   let realme = async () => {
     try {
-      let get = await axios.get(
-        "https://yadharthecommerces.herokuapp.com/realme"
-      );
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/realme");
       console.log(datas);
       setdatas([...get.data]);
     } catch (error) {}
@@ -122,13 +291,21 @@ function Mobile() {
     } catch (error) {}
   };
 
-  let handleadd = async (code) => {
+  let allmob = async () => {
     try {
-      console.log(code);
+      let get = await axios.get("https://yadharthecommerces.herokuapp.com/allmob");
+      console.log(datas);
+      setdatas([...get.data]);
+    } catch (error) {}
+  };
+
+  let handleadd = async (id, code) => {
+    try {
+      console.log(id, code);
       alert("Added to cart");
       let post = await axios.post(
         "https://yadharthecommerces.herokuapp.com/cartm",
-        { code },
+        { id, code },
         {
           headers: {
             Authorization: window.localStorage.getItem("app_token"),
@@ -366,7 +543,7 @@ function Mobile() {
                   <button
                     className="bbtn"
                     onClick={() => {
-                      fetch();
+                      allmob();
                     }}
                   >
                     All
@@ -431,7 +608,7 @@ function Mobile() {
                         <button
                           className="add"
                           onClick={() => {
-                            handleadd(data.code);
+                            handleadd(data._id, data.code);
                           }}
                         >
                           <AddShoppingCartSharpIcon id="acs" />

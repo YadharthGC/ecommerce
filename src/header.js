@@ -50,9 +50,21 @@ function Header() {
                         onClick={() => {
                           window.localStorage.removeItem("app_token");
                           navigate("/");
+                          window.location.reload();
                         }}
                       >
                         Sign-out
+                      </button>
+                    </li>
+                    <li style={{ color: "black" }}>
+                      <button
+                        className="bbtn"
+                        onClick={() => {
+                          navigate("/shipped");
+                          window.location.reload();
+                        }}
+                      >
+                        Purchases
                       </button>
                     </li>
                   </ul>
