@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./header";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { LoadingButton } from "@mui/lab";
 
 function Shipped() {
   const [datas, setdatas] = useState([]);
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     fetch();
@@ -22,9 +24,12 @@ function Shipped() {
         }
       );
       setdatas([...get.data]);
+      setloading(false);
       console.log(datas);
       console.log(datas.items);
-    } catch (error) {}
+    } catch (error) {
+      setloading(false);
+    }
   };
 
   function date() {}
@@ -92,39 +97,42 @@ function Shipped() {
           </div>
         </div>
       </nav>
-
-      <div className="display">
-        {datas.map((data) => {
-          return (
-            <div className="displaya">
-              <div className="ans" style={{ textAlign: "center" }}>
-                <u>{data.date}</u>
+      {loading ? (
+        <LoadingButton />
+      ) : (
+        <div className="display">
+          {datas.map((data) => {
+            return (
+              <div className="displaya">
+                <div className="ans" style={{ textAlign: "center" }}>
+                  <u>{data.date}</u>
+                </div>
+                <div className="title" style={{ fontSize: "15px" }}>
+                  {data.name}
+                </div>
+                <div className="dqa">
+                  <span className="ans">{data.pin}</span>
+                </div>
+                <div className="dqa">
+                  <span className="ans">Rs {data.total}/-</span>
+                </div>
+                <div className="dqa">
+                  <span className="ans">
+                    <div>
+                      <u>Items</u>
+                    </div>
+                    <ul>
+                      {data.items.map((item) => {
+                        return <li>{item}</li>;
+                      })}
+                    </ul>
+                  </span>
+                </div>
               </div>
-              <div className="title" style={{ fontSize: "15px" }}>
-                {data.name}
-              </div>
-              <div className="dqa">
-                <span className="ans">{data.pin}</span>
-              </div>
-              <div className="dqa">
-                <span className="ans">Rs {data.total}/-</span>
-              </div>
-              <div className="dqa">
-                <span className="ans">
-                  <div>
-                    <u>Items</u>
-                  </div>
-                  <ul>
-                    {data.items.map((item) => {
-                      return <li>{item}</li>;
-                    })}
-                  </ul>
-                </span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
