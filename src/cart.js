@@ -14,7 +14,7 @@ function Cart() {
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, [datas]);
 
   let fetch = async () => {
     try {
@@ -44,7 +44,7 @@ function Cart() {
   let handlechange = async (e, id, amt) => {
     console.log(e, id, amt);
     try {
-      window.location.reload();
+      // window.location.reload();
       let post = await axios.post(
         "https://yadharthecommerces.herokuapp.com/qty",
         { e, id, amt }
@@ -54,7 +54,7 @@ function Cart() {
   };
 
   let handledelete = async (id) => {
-    window.location.reload();
+    // window.location.reload();
     console.log(id);
     let deletex = await axios.delete(
       `https://yadharthecommerces.herokuapp.com/delete/${id}`
