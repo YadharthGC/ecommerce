@@ -160,7 +160,7 @@ function Cart() {
                   handlepost();
                 }}
               >
-                BagIt
+                Buy
               </button>
             </div>
           </div>
