@@ -178,6 +178,10 @@ function Mobile() {
     fetch();
   }, []);
 
+  useEffect(() => {
+    postmob();
+  }, []);
+
   let postmob = async () => {
     try {
       let post = await axios.post(
@@ -191,7 +195,6 @@ function Mobile() {
   };
 
   let fetch = async () => {
-    postmob();
     try {
       let get = await axios.get(
         "https://yadharthecommerces.herokuapp.com/mobiles"

@@ -1,11 +1,16 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 function Ship() {
+  function showrazorpay() {}
+
   const [datas, setdatas] = useState([]);
   const [total, settotal] = useState(0);
   const [name, setname] = useState([]);
@@ -20,6 +25,22 @@ function Ship() {
 
   const [items, setitems] = useState([]);
   const navigate = useNavigate();
+
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: "0.01",
+          },
+        },
+      ],
+    });
+  };
+
+  const onApprove = (data, actions) => {
+    return actions.order.capture();
+  };
 
   useEffect(() => {
     fetch();
@@ -164,7 +185,7 @@ function Ship() {
               handlesubmit(e);
             }}
           >
-            <div className="final">
+            {/* <div className="final">
               <div className="location">
                 <div className="xa"> Delivery Address</div>
                 <div className="xb">Name</div>
@@ -238,17 +259,30 @@ function Ship() {
                   ></input>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="t">
+            {/* <div className="t">
               Total=Rs<span style={{ fontSize: "30px" }}> {total}</span>/-
-            </div>
+            </div> */}
+            {/* <div className="xc">
+              <button
+                onClick={() => {
+                  showrazorpay();
+                }}
+              >
+                buy
+              </button>
+            </div> */}
             <div className="xc">
               <input
                 value="purchase"
                 type="submit"
                 className="xcsubmit"
               ></input>
+              <PayPalButton
+                createOrder={(data, actions) => createOrder(data, actions)}
+                onApprove={(data, actions) => onApprove(data, actions)}
+              />
             </div>
           </form>
           <div className="display">
