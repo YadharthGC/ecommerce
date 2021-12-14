@@ -22,9 +22,7 @@ function Signin() {
       );
       window.localStorage.setItem("app_token", post.data.token);
       navigate("/mobile");
-    } catch (error) {
-      alert("Incorrect Gmail/Password");
-    }
+    } catch (error) {}
   };
 
   return (

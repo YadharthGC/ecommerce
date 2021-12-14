@@ -280,6 +280,7 @@ function Ship() {
                 className="xcsubmit"
               ></input>
               <PayPalButton
+                style={{ paddingTop: "2%" }}
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
               />
